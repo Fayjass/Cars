@@ -38,6 +38,20 @@ class App extends Component {
     const divStyle = {
       textAlign: 'center',
     }
+    let cars = null
+
+    if (this.state.showCars) {
+      cars = this.state.cars.map((car, index) => {
+        return (
+          <Car
+            name={car.name}
+            year={car.year}
+            onChangeTitle={() => this.onChangeTitleHandler(this, car.name)}
+            key={index}
+          />
+        )
+      })
+    }
 
     return (
       <div style={divStyle}>
@@ -45,20 +59,7 @@ class App extends Component {
         {/* <input /> */}
         {/* <input type='text' onChange={this.HandlerInput} /> */}
         <button onClick={this.toggleCarsHandler}>Toggle cars</button>
-        {this.state.showCars
-          ? this.state.cars.map((car, index) => {
-              return (
-                <Car
-                  name={car.name}
-                  year={car.year}
-                  onChangeTitle={() =>
-                    this.onChangeTitleHandler(this, car.name)
-                  }
-                  key={index}
-                />
-              )
-            })
-          : null}
+        {cars}
       </div>
     )
   }
