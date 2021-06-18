@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import Car from './Car/Car.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  // create state
+  state = {
+    cars: [
+      { name: 'Ford', year: '2014' },
+      { name: 'Audi', year: '2018' },
+      { name: 'Mazda', year: '2010' },
+    ],
+    pageTitle: 'React component',
+  }
+  // change state by function setState
+  changeTitleHandler = () => {
+    const oldTitle = this.state.pageTitle
+    const newTitle = oldTitle + '(changed)'
+    this.setState({
+      pageTitle: newTitle,
+    })
+  }
+  render() {
+    const divStyle = {
+      textAlign: 'center',
+    }
+
+    const cars = this.state.cars
+
+    return (
+      <div style={divStyle}>
+        <h1>{this.state.pageTitle}</h1>
+        <button onClick={this.changeTitleHandler}>Change Title</button>
+        {/* {cars.map((car, index) => {
+          return <Car name={cars[0].name} year={cars[0].year} key={index} />
+        })} */}
+        <Car name={cars[0].name} year={cars[0].year} />
+      </div>
+    )
+  }
 }
 
-export default App;
+// const propsType = {
+//   name:
+// }
+
+export default App
