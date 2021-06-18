@@ -38,24 +38,21 @@ class App extends Component {
     return (
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
+        <input />
         <input type='text' onChange={this.HandlerInput} />
         <button onClick={this.onChangeTitleHandler.bind(this, 'Changed')}>
           Change Title
         </button>
-        {/* {cars.map((car, index) => {
-          return <Car name={cars[0].name} year={cars[0].year} key={index} />
-        })} */}
-        <Car
-          name={cars[0].name}
-          year={cars[0].year}
-          onChangeTitle={() => this.onChangeTitleHandler(this, cars[0].name)}
-        />
-
-        <Car
-          name={cars[1].name}
-          year={cars[1].year}
-          onChangeTitle={this.onChangeTitleHandler.bind(this, cars[1].name)}
-        />
+        {cars.map((car, index) => {
+          return (
+            <Car
+              name={car.name}
+              year={car.year}
+              onChangeTitle={() => this.onChangeTitleHandler(this, car.name)}
+              key={index}
+            />
+          )
+        })}
       </div>
     )
   }
