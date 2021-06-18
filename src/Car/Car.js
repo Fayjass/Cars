@@ -1,4 +1,5 @@
 import React from 'react'
+import PropsType from 'prop-types'
 // function Car(props) {
 //   const divStyle = {
 //     bordere: '1px solid #ccc',
@@ -11,8 +12,8 @@ import React from 'react'
 //   return (
 //     <div style={divStyle}>
 //       <h2>this is car component</h2>
-//       <p>Year</p>
-//       <input />
+// <p>Year</p>
+// <input />
 //       <button></button>
 //     </div>
 //   )
@@ -20,10 +21,25 @@ import React from 'react'
 
 //
 
-// const car = () => <div>this is car component</div>
-export default () => (
+const car = (props) => (
   <div>
-    this is car component
-    <strong>text</strong>
+    <p>
+      <strong>Car name: {props.name}</strong>
+    </p>
+    <p>
+      Year: <strong>{props.year}</strong>
+      {props.children}
+    </p>
+    <button onClick={props.onChangeTitle}>Click</button>
   </div>
 )
+export default car
+
+// () => (
+//   <div>
+//     <p>this is car component </p>
+//     <p>
+//       <strong>{Math.random()}</strong>
+//     </p>
+//   </div>
+// )
